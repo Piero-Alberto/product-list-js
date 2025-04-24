@@ -9,13 +9,18 @@ body {
   gap: 16px;
 }
 .card {
-  border: 1px solid #ccc;
   border-radius: 12px;
   padding: 16px;
   width: 200px;
   text-align: center;
   background: #fff;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+
+}
+
+.card h3{
+  color: #007bff;
+
 }
 .card img {
   max-width: 100%;
@@ -23,7 +28,7 @@ body {
 }
 .add-to-cart {
   margin-top: 10px;
-  padding: 8px 12px;
+  padding: 8px 25px;
   background: #007bff;
   color: #fff;
   border: none;
@@ -33,11 +38,7 @@ body {
 .add-to-cart:hover {
   background: #0056b3;
 }
-#cart {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 2px solid #ddd;
-}
+
 #cart ul {
   list-style: none;
   padding: 0;
@@ -46,7 +47,7 @@ body {
 #cart {
   margin-top: 40px;
   padding: 20px;
-  border-top: 2px solid #ddd;
+
   background: #fff;
   border-radius: 12px;
   box-shadow: 2px 2px 12px rgba(0,0,0,0.05);
@@ -80,7 +81,7 @@ body {
 
 .remove {
   margin-left: 12px;
-  background-color: #e74c3c;
+  background-color: #ff0648;
   color: white;
   border: none;
   padding: 4px 10px;
@@ -91,5 +92,5 @@ body {
 }
 
 .remove:hover {
-  background-color: #c0392b;
+  background-color: #db0134;
 }
