@@ -10,37 +10,36 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalCount = 0;
     let totalPrice = 0;
 
-    for (const key in cart) {
+    for(const key in cart) {
       const item = cart[key];
       const li = document.createElement("li");
       const total = (item.price * item.quantity).toFixed(2);
 
       li.innerHTML = `
-        🍰 ${item.name} (x${item.quantity}) - $${total}
-        <button class="remove" data-name="${item.name}">Eliminar</button>
-      `;
+      🍰 ${item.name} (x${item.quantity}) - $${total}
+      <button class="remove" data-name="${item.name}"> 🗑️ Eliminar</button>
+    `;
+    cartItems.appendChild(li);
+    totalCount += item.quantity;
+    totalPrice += item.price * item.quantity;
+  }
+  if(totalPrice > 0){
+    const totalLi = document.createElement("li");
+    totalLi.style.fontWeight = "bold";
+    totalLi.textContent = `Order Total: $${totalPrice.toFixed(2)}`;
+    cartItems.appendChild(totalLi);
+  }
 
-      cartItems.appendChild(li);
-      totalCount += item.quantity;
-      totalPrice += item.price * item.quantity;
-    }
+  cartCount.textContent = totalCount;
 
-    if (totalPrice > 0) {
-      const totalLi = document.createElement("li");
-      totalLi.style.fontWeight = "bold";
-      totalLi.textContent = `Order Total: $${totalPrice.toFixed(2)}`;
-      cartItems.appendChild(totalLi);
-    }
+  document.querySelectorAll(".remove").forEach(button =>{
+    button.addEventListener("click", ()=>{
+      const name = button.dataset.name;
+      delete cart[name];
+      renderCart();
+    })
+  })
 
-    cartCount.textContent = totalCount;
-
-    document.querySelectorAll(".remove").forEach(button => {
-      button.addEventListener("click", () => {
-        const name = button.dataset.name;
-        delete cart[name];
-        renderCart();
-      });
-    });
   }
 
   fetch("data.json")
