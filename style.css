@@ -2,12 +2,64 @@ body {
   font-family: Jost;
   padding: 20px;
   background: #fafafa;
+  margin: 0;
 }
+
+nav {
+  background-color: #fdfaf4;
+  padding: 10px 20px; /* Añadido padding horizontal */
+  border-bottom: 1px solid #eee;
+  display: flex; /* Para alinear logo y menú */
+  justify-content: space-between; /* Espacio entre logo y menú */
+  align-items: center; /* Alinear verticalmente */
+}
+
+.logo a {
+  display: inline-block; /* Para poder manipular el enlace como bloque */
+}
+
+.logo img {
+  height: 50px; /* Ajusta la altura del logo según necesites */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #007bff;
+}
+
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 20px auto;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  flex-grow: 1;
 }
 
 .card {
@@ -16,24 +68,25 @@ body {
   width: 250px;
   text-align: center;
   background: #fff;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.card h3{
+.card h3 {
   color: #7e7666;
-  margin:5px;
-  font-weight: 600;
+  margin: 5px;
+  font-weight: 500;
 }
 
-.card p{
+.card p {
   color: grey;
   margin: 0px;
 }
+
 .card img {
   max-width: 100%;
   border-radius: 8px;
 }
+
 .add-to-cart {
   margin-top: 10px;
   padding: 8px 30px;
@@ -44,28 +97,33 @@ body {
   cursor: pointer;
   font-size: 1rem;
 }
+
 .add-to-cart:hover {
   background: #0056b3;
 }
 
-#cart ul {
-  list-style: none;
-  padding: 0;
-}
-
 #cart {
-  margin-top: 40px;
   padding: 20px;
-  margin: 40px auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 2px 2px 12px rgba(0,0,0,0.05);
-  max-width: 600px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.05);
+  width: 1200px; /* Aumentamos el ancho del carrito */
+  min-width: 300px; /* Aseguramos un ancho mínimo */
+  margin-top: 0;
+  /* Ajuste para el espacio entre container y cart */
+  display: flex;
+  flex-direction: column;
 }
 
 #cart h2 {
   font-size: 1.2rem;
   margin-bottom: 16px;
+}
+
+#cart ul {
+  list-style: none;
+  padding: 0;
+  flex-grow: 1; /* Permite que la lista crezca y ocupe espacio */
 }
 
 #cart-items li {
@@ -81,7 +139,7 @@ body {
 }
 
 #cart-items li:last-child {
-  margin-top: 20px;
+  margin-top: auto; /* Empuja el total hacia abajo */
   background: #f9f9f9;
   font-weight: bold;
   justify-content: center;
@@ -105,30 +163,53 @@ body {
 }
 
 
-nav {
-  background-color: #f8f8f8;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column; /* Apilar el contenedor y el carrito */
+    align-items: center; /* Centrar los elementos */
+    gap: 20px;
+  }
+
+  #cart {
+    width: 100%; /* El carrito ocupa todo el ancho */
+    max-width: 600px; /* Limitar el ancho máximo del carrito */
+    min-width: auto; /* Permitir que el ancho se ajuste */
+    margin: 0 auto; /* Centrar el carrito */
+  }
+
+  .container {
+    margin-top: 20px; /* Añadir un poco de espacio sobre el contenedor de cards */
+  }
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
+/* Para pantallas aún más pequeñas (ancho máximo de 768px - móviles) */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 8px); /* Dos cards por fila con un pequeño espacio */
+  }
+
+  /* Para pantallas muy pequeñas (ancho máximo de 480px - móviles pequeños) */
+  @media (max-width: 480px) {
+    .card {
+      width: 100%; /* Una card por fila */
+    }
+  }
+
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Apilar logo y menú en pantallas pequeñas */
+    align-items: center; /* Centrar elementos */
+    text-align: center; /* Centrar el menú */
+    padding: 10px;
+  }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
+  .logo {
+    margin-bottom: 10px; /* Espacio entre logo y menú apilados */
+  }
 
-nav ul li a:hover {
-  color: #007bff;
+  nav ul li {
+    margin: 5px 10px; /* Reducir el margen de los items del menú */
+  }
 }
